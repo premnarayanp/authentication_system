@@ -1,24 +1,27 @@
 <header id="header">
     <ul id="menu-bar-list">
 
+        <%if(!locals.user){%>
 
-        <li>
-            <a href="/users/sign-in" class="menu-btn"> Login</a>
-        </li>
+            <li>
+                <a href="/users/sign-in" class="menu-btn"> Login</a>
+            </li>
 
-        <li>
-            <a href="/users/sign-up" class="menu-btn">Sign UP </a>
-        </li>
+            <li>
+                <a href="/users/sign-up" class="menu-btn">Sign UP </a>
+            </li>
 
+            <%}else{%>
 
-        <li>
-            <a class="menu-btn" href="/">Home</a>
-        </li>
+                <li>
+                    <a class="menu-btn" href="/">Home</a>
+                </li>
 
+                <li>
+                    <a href="/users/sign-out" class="menu-btn">Logout</a>
+                </li>
 
-        <li>
-            <a href="/users/sign-out" class="menu-btn">Logout</a>
-        </li>
+                <%}%>
 
     </ul>
 </header>
