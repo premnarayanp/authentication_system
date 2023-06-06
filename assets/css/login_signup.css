@@ -1,0 +1,64 @@
+/* .login-signUp {
+    height: 50%;
+    width: 100%;
+} */
+
+
+/* .loginForm {
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    min-width: 300px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.loginSignUpHeader {
+    font-weight: 600;
+    font-size: 30px;
+    color: #ef7917;
+}
+
+.field {
+    width: 100%;
+}
+
+.field input {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.field button {
+    width: 100%;
+    margin-top: 20px;
+    background: rgb(238, 65, 94);
+    border-radius: 2px;
+    color: #fff;
+    font-size: 20px;
+    padding: 9px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+}
+
+.field button:hover {
+    cursor: pointer;
+    background-color: red;
+}
+
+.field input:focus {
+    outline: none;
+} */
