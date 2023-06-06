@@ -1,0 +1,52 @@
+body #header {
+    /* width: 98%; */
+    /* border-radius: 50px; */
+    width: 100%;
+    height: 9vh;
+    /* background-color: rgb(225, 208, 109); */
+    background-color: rgb(234, 197, 143);
+    margin: 0;
+    top: 0;
+    box-sizing: border-box;
+    border: solid 1px rgb(18, 219, 18);
+    position: fixed;
+}
+
+#menu-bar-list {
+    height: 100%;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+}
+
+#menu-bar-list li .menu-btn {
+    display: inline-block;
+    color: gray;
+    border: solid 2px gray;
+    background-color: pink;
+    border-radius: 20px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+
+/* #downloads-btn {
+    padding: 0;
+    margin: 0;
+} */
+
+#menu-bar-list li a {
+    text-decoration: none;
+    padding: 3px 10px;
+    font-size: 15px;
+}
+
+#menu-bar-list li .menu-btn:hover {
+    background-color: rgb(227, 34, 66);
+    color: white;
+}
