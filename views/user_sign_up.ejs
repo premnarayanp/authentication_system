@@ -1,7 +1,53 @@
-<form class="forms" action="/users/create" method="POST">
-    <span class='formsHeader'>Sign Up</span>
+<div class="login-signUp">
+    <form class="forms" action="/users/create" method="POST">
+        <span class='formsHeader'>Sign Up</span>
 
-    <div class="field">
+        <div class="field">
+            <input type="text" name="name" placeholder="Enter Name" required>
+        </div>
+
+        <div class="field">
+            <input type="number" name="mobileNum" placeholder="Enter Mobile Num">
+        </div>
+
+        <div class="field">
+            <input type="email" name="email" placeholder="Enter Email" required>
+        </div>
+
+        <div class="field">
+            <input type="password" name="password" placeholder="Enter Password" required>
+        </div>
+
+        <div class="field">
+            <input type="password" name="confirmPassword" placeholder="Enter Confirm Password" required>
+        </div>
+
+        <div id="captcha-container">
+            <div class="field">
+                <input type="text" name="captcha" placeholder="Enter Captcha" required>
+            </div>
+
+            <div id="captcha-action">
+                <button id="reset-captcha-btn" onclick="resendCaptcha()"></button>
+                <img id="captcha-img" />
+            </div>
+        </div>
+
+        <input id="captchaId" name="captchaId" value="" type="hidden" />
+
+        <div class="field">
+            <button type="submit" value="SignIn"> SignUp </button>
+        </div>
+
+    </form>
+    <script src="/js/captcha.js"></script>
+    <script>
+        loadCaptcha()
+    </script>
+</div>
+
+<!---
+ <div class="field">
         <input type="text" name="firstName" placeholder="Enter First Name" required>
     </div>
 
@@ -9,25 +55,4 @@
     <div class="field">
         <input type="text" name="lastName" placeholder="Enter Last Name" required>
     </div>
-
-    <div class="field">
-        <input type="number" name="mobileNum" placeholder="Enter Mobile Num">
-    </div>
-
-
-    <div class="field">
-        <input type="email" name="email" placeholder="Enter Email" required>
-    </div>
-
-    <div class="field">
-        <input type="password" name="password" placeholder="Enter Password" required>
-    </div>
-
-    <div class="field">
-        <input type="password" name="confirmPassword" placeholder="Enter Confirm Password" required>
-    </div>
-
-    <div class="field">
-        <button type="submit" value="SignIn"> SignUp </button>
-    </div>
-</form>
+-->

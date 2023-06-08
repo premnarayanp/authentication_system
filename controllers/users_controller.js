@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Captcha = require('../models/captcha');
 
 //render Sign in Page
 module.exports.signIn = function(req, res) {
@@ -25,32 +26,46 @@ module.exports.signUp = function(req, res) {
 //create user or SignUp
 module.exports.create = async function(req, res) {
     const userBody = req.body;
-    if (!userBody.firstName || !userBody.lastName || !userBody.email || !userBody.password || !userBody.confirmPassword) {
+
+    if (!userBody.name || !userBody.email || !userBody.password || !userBody.confirmPassword || !userBody.captcha) {
         console.log("please fill all fields");
         return res.redirect('back');
     }
 
     if (req.body.password != req.body.confirmPassword) {
+        console.log("confirm password not same");
         return res.redirect('back');
     }
 
     try {
-        const user = await User.findOne({ email: req.body.email });
-        if (!user) {
-            try {
-                const user = await User.create(req.body);
-                console.log("user", user);
-                return res.redirect('/users/sign-in');
+        const ipAddress = req.header('x-forwarded-for') || req.socket.remoteAddress;
+        const captcha = await Captcha.findById(userBody.captchaId);
+        if (captcha && captcha.captcha == userBody.captcha && captcha.ipAddress == ipAddress) {
+            console.log("==========captcha is same==================");
+            const user = await User.findOne({ email: req.body.email });
+            if (!user) {
+                try {
+                    const user = await User.create(req.body);
+                    console.log("user", user);
+                    return res.redirect('/users/sign-in');
 
-            } catch (error) {
-                console.log('error in creating user while signing up');
-                console.log(error);
-                return;
+                } catch (error) {
+                    console.log('error in creating user while signing up');
+                    console.log(error);
+                    return;
+                }
+
+            } else {
+                console.log("User Already Exist");
+                return res.redirect('back');
             }
-
         } else {
+            console.log("you enter Wrong Captcha");
             return res.redirect('back');
         }
+
+
+
 
     } catch (error) {
         console.log('error in finding user in signing up');

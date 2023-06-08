@@ -9,22 +9,14 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/login_signup.css">
-    <link rel="stylesheet" href="/css/layout-pages-container.css">
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/css/batch.css">
-    <link rel="stylesheet" href="/css/student.css">
-    <link rel="stylesheet" href="/css/interview.css">
-    <link rel="stylesheet" href="/css/forms.css">
-
-    <!--<link rel="stylesheet" href="/css/batches.css">
-    <link rel="stylesheet" href="/css/students.css">
-    <link rel="stylesheet" href="/css/interviews.css">-->
+    <!-- <link rel="stylesheet" href="/css/home.css">-->
 
     <%- style %>
 </head>
 
 <body>
     <%- include('_header'); %>
+        <script src="/js/BASE_URL.js"></script>
 
         <main id="layout-main">
             <%- body %>
@@ -33,11 +25,6 @@
         <%- include('_footer'); %>
 
             <%- script %>
-                <script src="/js/BASE_URL.js"></script>
-                <script src="/js/batch.js"></script>
-                <script src="/js/student.js"></script>
-                <script src="/js/courseScore.js"></script>
-                <script src="/js/interview.js"></script>
 
 </body>
 
