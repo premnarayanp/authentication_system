@@ -20,8 +20,8 @@ passport.use(new LocalStrategy({
         try {
             const user = await User.findOne({ email: email });
             if (!user || user.password != password) {
-                console.log('Invalid User Name And Password');
-                //req.flash('error', 'Invalid User Name And Password')
+                //console.log('Invalid User Name And Password');
+                req.flash('error', 'Invalid User Name And Password')
                 return done(null, false);
             }
 

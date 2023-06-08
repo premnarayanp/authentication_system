@@ -6,7 +6,7 @@ module.exports.signIn = function(req, res) {
     if (req.isAuthenticated()) {
         return res.redirect('/');
     }
-
+    //console.log("===========logout Noty===============");
     return res.render('user_sign_in', {
         title: "authentication_system | SignIn",
     });
@@ -28,12 +28,14 @@ module.exports.create = async function(req, res) {
     const userBody = req.body;
 
     if (!userBody.name || !userBody.email || !userBody.password || !userBody.confirmPassword || !userBody.captcha) {
-        console.log("please fill all fields");
+        //console.log("please fill all fields");
+        req.flash('error', 'please fill all fields....');
         return res.redirect('back');
     }
 
     if (req.body.password != req.body.confirmPassword) {
-        console.log("confirm password not same");
+        //console.log("confirm password not same");
+        req.flash('error', 'confirm password not same....');
         return res.redirect('back');
     }
 
@@ -46,7 +48,8 @@ module.exports.create = async function(req, res) {
             if (!user) {
                 try {
                     const user = await User.create(req.body);
-                    console.log("user", user);
+                    // console.log("user", user);
+                    req.flash('success', 'Successfully SignUp ,Now Please Login');
                     return res.redirect('/users/sign-in');
 
                 } catch (error) {
@@ -56,11 +59,13 @@ module.exports.create = async function(req, res) {
                 }
 
             } else {
-                console.log("User Already Exist");
+                //console.log("User Already Exist");
+                req.flash('error', 'User Already Exist....');
                 return res.redirect('back');
             }
         } else {
-            console.log("you enter Wrong Captcha");
+            //console.log("you enter Wrong Captcha");
+            req.flash('error', 'you enter Wrong Captcha....');
             return res.redirect('back');
         }
 
@@ -76,6 +81,7 @@ module.exports.create = async function(req, res) {
 
 // sign in and create a session for the user
 module.exports.createSession = function(req, res) {
+    req.flash('success', 'Logged in successfully');
     return res.redirect('/');
 }
 
@@ -86,9 +92,11 @@ module.exports.destroySession = function(req, res) {
             console.log('Error:-' + err);
             return;
         }
-        console.log("==================logout========================");
-        //return res.redirect('/users/sign-in');
-    });
 
-    return res.redirect('/');
+        /req.flash('success', 'You have successfully logged out');
+        //console.log("==================logout========================");
+        return res.redirect('/users/sign-in');
+    });
+    // return res.redirect('/');
+    return res.redirect('/users/sign-in');
 }
