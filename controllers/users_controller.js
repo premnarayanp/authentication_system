@@ -93,10 +93,19 @@ module.exports.destroySession = function(req, res) {
             return;
         }
 
-        /req.flash('success', 'You have successfully logged out');
-        //console.log("==================logout========================");
+        //req.flash('success', 'You have successfully logged out');
         return res.redirect('/users/sign-in');
     });
-    // return res.redirect('/');
     return res.redirect('/users/sign-in');
 }
+
+//render Forget Page
+module.exports.forget = function(req, res) {
+    if (req.isAuthenticated()) {
+        return res.redirect('/');
+    }
+    //console.log("===========logout Noty===============");
+    return res.render('user_forget_password', {
+        title: "Forget Password",
+    });
+};

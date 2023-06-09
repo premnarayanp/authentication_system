@@ -1,25 +1,30 @@
-<!--<div class="login-signUp">-->
+<div class="login-signUp">
 
-<form class="forms" action="/users/create_session" method="POST">
-    <span class='formsHeader'>Log In</span>
+    <form class="forms" action="/users/create_session" method="POST">
+        <span class='formsHeader'>Log In</span>
 
-    <div class="field">
-        <input type="email" name="email" placeholder="Enter Email" required>
-    </div>
+        <div class="field">
+            <input type="email" name="email" placeholder="Enter Email" required>
+        </div>
 
-    <div class="field">
-        <input type="password" name="password" placeholder="Enter Password" required>
-    </div>
+        <div class="field">
+            <input type="password" name="password" placeholder="Enter Password" required>
+        </div>
 
-    <div class="field">
-        <button type="submit" value="SignIn"> SignIn </button>
-    </div>
+        <div class="field">
+            <button type="submit" value="SignIn"> SignIn </button>
+        </div>
 
-    <div class="field" class="google-Auth">
-        <a href="/user/gogle-auth">SignIn With Google</a>
-    </div>
-</form>
+        <a id="forget" href="/users/forget">Forget Password</a>
+
+    </form>
+
+    <span class="formsHeader">OR</span>
+
+    <a href="/users/auth/google" id="google-login-btn">
+        <img src="/image/google-signIn.png" />
+    </a>
 
 
 
-<!--</div>-->
+</div>
