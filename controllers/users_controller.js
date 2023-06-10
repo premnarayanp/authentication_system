@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Captcha = require('../models/captcha');
+const OTP = require('../models/otp');
 
 //render Sign in Page
 module.exports.signIn = function(req, res) {
@@ -104,8 +105,49 @@ module.exports.forget = function(req, res) {
     if (req.isAuthenticated()) {
         return res.redirect('/');
     }
-    //console.log("===========logout Noty===============");
     return res.render('user_forget_password', {
         title: "Forget Password",
     });
+};
+
+module.exports.forgetPassword = async function(req, res) {
+    if (req.isAuthenticated()) {
+        return res.redirect('/');
+    }
+    const body = req.body;
+
+    if (!body.email || !body.newPassword || !body.confirmNewPassword || !body.otp || !body.otpId) {
+        if (!body.otpId) {
+            req.flash('error', 'otpId not exist ,So please refresh and send otp');
+        }
+        req.flash('error', 'please fill all fields....');
+        return res.redirect('back');
+    }
+
+    const otp = await OTP.findById({ _id: body.otpId });
+    if (otp) {
+        const expireTime = otp.expireTime - new Date().getTime();
+        if (otp.otp == body.otp && expireTime >= 0) {
+
+            const user = await User.findOne({ email: body.email });
+            if (user) {
+                user.password = body.newPassword;
+                user.save();
+                req.flash('success', 'Successfully Password change,Now Login');
+                return res.redirect('/users/sign-in');
+            } else {
+                req.flash('error', 'User not Exist ,Please SignuP');
+                return res.redirect('/users/sign-up');
+            }
+        } else {
+
+            expireTime <= 0 ? req.flash('error', 'OTP Expired Please Resend') : req.flash('error', 'OTP not match ,Invalid OTP');
+            req.flash('error', 'OTP not match ,Invalid OTP');
+            return res.redirect('back');
+        }
+    } else {
+        req.flash('error', 'invalid OTP  req ID,Please refresh and try again');
+        return res.redirect('back');
+    }
+
 };
