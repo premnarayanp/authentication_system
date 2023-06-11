@@ -9,6 +9,9 @@ router.get('/sign-out', userController.destroySession);
 router.post('/create', userController.create);
 router.get('/forget', userController.forget);
 router.post('/forget/password', userController.forgetPassword);
+router.get('/reset/password/link', userController.sendResetLink);
+router.get('/reset/pass_form/:token', userController.sendResetForm);
+router.post('/reset/password', userController.resetPassword);
 
 //use passport as middleware to authenticate
 router.post('/create_session', passport.authenticate(

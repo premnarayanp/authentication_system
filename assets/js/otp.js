@@ -1,5 +1,9 @@
 async function sendOTP(e, otpId) {
     const mailId = document.getElementById('mail-id').value;
+    if (!mailId) {
+        showNotification('error', "Please Fill mail id");
+        return;
+    }
     const route = otpId ? `/otp/resend/${otpId}` : `/otp/send/${mailId}`;
 
     const URL = BASE_URL + route;
@@ -15,8 +19,11 @@ async function sendOTP(e, otpId) {
 
         //console.log("jsonData=", jsonData);
         if (jsonData.success) {
-            console.log("=======OTP sends=======");
-            console.log(jsonData.otpId);
+            //console.log("=======OTP sends=======");
+            // console.log(jsonData.otpId);
+
+            showNotification('success', `OTP send on ${jsonData.mailTo} please check`)
+
             target.setAttribute('onclick', `sendOTP(event,'${jsonData.otpId}')`);
             document.getElementById('OTPid').value = jsonData.otpId;
 
@@ -34,6 +41,8 @@ async function sendOTP(e, otpId) {
                 timeCounter += 1;
             }, 1000)
         } else {
+
+            showNotification('error', jsonData.msg);
             target.innerText = 'Resend OTP'
             target.disabled = false;
             target.style = "background-color:green"

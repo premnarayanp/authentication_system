@@ -10,11 +10,11 @@ exports.newOTP = async(otp) => {
         }, (error, info) => {
             if (error) {
                 console.log("Error in sending mail", error);
-                console.log("=====================resolve===================");
+                console.log("=====================resect===================");
                 reject({ success: false });
 
             }
-            //console.log("message send to ", info);
+            // console.log("message send to ", info);
             resolve({ success: true, info: info });
         });
 

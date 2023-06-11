@@ -22,6 +22,7 @@
 <body>
     <%- include('_header'); %>
         <script src="/js/BASE_URL.js"></script>
+        <script src="/js/noty.js"></script>
 
         <main id="layout-main">
             <%- body %>
@@ -51,7 +52,7 @@
                         text: "<%=flash.error%>",
                         type: 'error',
                         layout: 'top',
-                        timeout: 1500
+                        timeout: 2500
                     }).show();
                     <%}%>
                 </script>

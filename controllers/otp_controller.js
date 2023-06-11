@@ -56,7 +56,7 @@ module.exports.resend = async function(req, res) {
             otpDoc.otp = otpVal;
             otpDoc.expireTime = expireTime;
             otpDoc.save();
-            console.log("2-update otp=", otpDoc);
+            //console.log("2-update otp=", otpDoc);
 
             const otp = { otp: otpVal, mail: otpDoc.mail };
 

@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
+    },
+    accessToken: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'AccessToken'
     }
 
 }, {
