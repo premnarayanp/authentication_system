@@ -1,4 +1,5 @@
 const transporter = require('../config/nodemailer');
+//send mail for reset Password form link
 exports.newPassRestLink = async(link) => {
     return new Promise((resolve, reject) => {
 

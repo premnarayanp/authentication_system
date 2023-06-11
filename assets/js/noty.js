@@ -1,3 +1,4 @@
+//for client side Noty/  with fetch/xhr req
 function showNotification(type, msg) {
     new Noty({
         theme: 'relax',

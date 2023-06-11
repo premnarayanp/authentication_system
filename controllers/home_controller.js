@@ -1,3 +1,4 @@
+//My home page
 module.exports.home = (req, res) => {
 
     if (req.isAuthenticated()) {

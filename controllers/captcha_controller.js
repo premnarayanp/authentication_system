@@ -1,5 +1,7 @@
 const Captcha = require('../models/captcha');
 
+
+//generate captcha
 module.exports.generate = async function(req, res) {
 
     const { captcha, captcha_imgStr } = createCaptcha(5);
@@ -32,6 +34,7 @@ module.exports.generate = async function(req, res) {
 
 }
 
+//regenerate  and recreate captcha
 module.exports.re_generate = async function(req, res) {
 
     const { captcha, captcha_imgStr } = createCaptcha(5);
@@ -57,7 +60,7 @@ module.exports.re_generate = async function(req, res) {
 
 }
 
-// create random  captcha
+// create random  captcha For Captcha img
 function createCaptcha(otpLength) {
     let captcha = "";
     let captcha_imgStr = "";
@@ -72,7 +75,7 @@ function createCaptcha(otpLength) {
     return { captcha, captcha_imgStr };
 }
 
-//convert captcha(String) to captcha(image)
+//convert captcha(String) in the  captcha(image) image formate
 function captchaStringToImage(captcha_imgStr) {
     const textToImage = require('text-to-image');
     const dataUri = textToImage.generateSync(captcha_imgStr, {

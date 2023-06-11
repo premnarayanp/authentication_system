@@ -1,4 +1,5 @@
 const OTP = require('../models/otp');
+//send OTP
 module.exports.send = async function(req, res) {
     console.log("================In OTP send========================")
     const mail = req.params.mailId;
@@ -41,7 +42,7 @@ module.exports.send = async function(req, res) {
 
 
 
-
+//Resend OTP and Update OTP
 module.exports.resend = async function(req, res) {
     console.log("================In OTP resend========================")
     const otpMailer = require('../mailers/otp_mailer');
@@ -77,7 +78,7 @@ module.exports.resend = async function(req, res) {
 
 }
 
-// create random  OTP
+// create random   String for OTP
 function createOTP(otpLength) {
     let otp = "";
     const otpSet = process.env.SECRETE_OTP_SET;

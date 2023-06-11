@@ -5,7 +5,7 @@ const AccessToken = require('../models/accessToken');
 const resetPassMailer = require('../mailers/reset_pass_mailer');
 
 const BASE_URL = 'http://localhost:8395/';
-//render Sign in Page
+//->render Sign in Page
 module.exports.signIn = function(req, res) {
     if (req.isAuthenticated()) {
         return res.redirect('/');
@@ -16,7 +16,7 @@ module.exports.signIn = function(req, res) {
     });
 };
 
-//render Sign Up Page
+//->render Sign Up Page
 module.exports.signUp = function(req, res) {
     if (req.isAuthenticated()) {
         return res.redirect('/');
@@ -27,7 +27,7 @@ module.exports.signUp = function(req, res) {
 };
 
 
-//create user or SignUp
+//->create user or SignUp
 module.exports.create = async function(req, res) {
     const userBody = req.body;
 
@@ -89,7 +89,7 @@ module.exports.create = async function(req, res) {
 }
 
 
-//create Access token for reset password
+//--create Access token for reset password
 function createAccessTokens(tokenLen) {
     let token = "";
     const tokenSet = process.env.SECRETE_TOKEN_SET;
@@ -132,6 +132,7 @@ module.exports.forget = function(req, res) {
     });
 };
 
+//forget Password
 module.exports.forgetPassword = async function(req, res) {
     if (req.isAuthenticated()) {
         return res.redirect('/');
@@ -181,7 +182,7 @@ module.exports.forgetPassword = async function(req, res) {
 
 };
 
-
+// send Password reset link on email
 module.exports.sendResetLink = async function(req, res) {
     let user = req.user;
 
@@ -211,7 +212,7 @@ module.exports.sendResetLink = async function(req, res) {
 
 }
 
-//send Reset form
+//send Reset Password for  form for reset PASSWORD
 module.exports.sendResetForm = async function(req, res) {
     if (req.isAuthenticated) {
 
@@ -223,7 +224,7 @@ module.exports.sendResetForm = async function(req, res) {
     }
 }
 
-//Finally reset Password
+//Finally reset Password done
 module.exports.resetPassword = async function(req, res) {
     console.log("===============finally in reset password===============")
     try {

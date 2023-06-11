@@ -1,3 +1,4 @@
+//load/get  captcha from server
 async function loadCaptcha() {
     const URL = BASE_URL + '/captcha/generate';
     try {
@@ -22,6 +23,7 @@ async function loadCaptcha() {
     }
 }
 
+//Resend captcha req and get captcha
 async function resendCaptcha(captchaId) {
     const URL = BASE_URL + `/captcha/re_generate/${captchaId}`;
     try {

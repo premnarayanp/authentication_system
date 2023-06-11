@@ -1,4 +1,5 @@
 const transporter = require('../config/nodemailer');
+//OTP mailer --send OTP on mail
 exports.newOTP = async(otp) => {
     return new Promise((resolve, reject) => {
 

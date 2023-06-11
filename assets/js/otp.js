@@ -1,3 +1,4 @@
+//send OTP /resend OTP
 async function sendOTP(e, otpId) {
     const mailId = document.getElementById('mail-id').value;
     if (!mailId) {

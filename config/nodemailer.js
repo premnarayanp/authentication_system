@@ -1,6 +1,7 @@
 // const ejs = require('ejs');
 //const path = require('path');
 
+//nodemailer transporter Objects
 const nodemailer = require('nodemailer');
 
 let transporter = nodemailer.createTransport({
