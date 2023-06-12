@@ -4,7 +4,8 @@ const OTP = require('../models/otp');
 const AccessToken = require('../models/accessToken');
 const resetPassMailer = require('../mailers/reset_pass_mailer');
 
-const BASE_URL = 'http://localhost:8395/';
+//const BASE_URL = 'http://localhost:8395/';
+const BASE_URL = 'https://auth-system-2chl.onrender.com';
 //->render Sign in Page
 module.exports.signIn = function(req, res) {
     if (req.isAuthenticated()) {
