@@ -1,9 +1,9 @@
-# authentication_system
-deploy:-https://auth-system-2chl.onrender.com;
-Database :- mongodb cloud.
-security:- using .env file .
+# authentication_syste
+#deploy:-https://auth-system-2chl.onrender.com;
+#Database :- mongodb cloud.
+#security:- using .env file .
 
-Features:-
+#Features:-
 1:- login/signpu with session using  passpoirt 
 2:- login/signup with email and password (passport local authentication)
 3:- login/signup with google account (passport google authentication)
@@ -16,7 +16,7 @@ Features:-
 11:- send notification usinf Noty also  with express or on client side when comes fetch/xhr req/res
 12:-show home page.
 
- Extra Package npm package :-
+ #Extra Package npm package :-
  1:- nodemailer -for send mail
  2:- dotenv -for .env file
  3:- text-to-image -it convert String captcha into Image formate.
